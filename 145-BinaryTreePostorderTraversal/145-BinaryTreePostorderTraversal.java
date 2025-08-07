@@ -1,4 +1,19 @@
-// Last updated: 8/7/2025, 10:53:26 AM
+// Last updated: 8/7/2025, 11:03:03 AM
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -15,16 +30,15 @@
  * }
  */
 class Solution {
-    public List<Integer> postorderTraversal(TreeNode root) {
-             List<Integer> ll = new ArrayList<>();
-        p(root,ll);
-        return ll;
-    }
-    public void p(TreeNode root,  List<Integer> ll){
-        if(root== null) return;
-       
-        p(root.left,ll);
-        p(root.right,ll);
-         ll.add(root.val);
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+        if(root==null) return new TreeNode(val);
+
+        if(root.val<val){
+            root.right=insertIntoBST(root.right,val);
+        }
+        else{
+            root.left=insertIntoBST(root.left,val);
+        }
+        return root;
     }
 }
