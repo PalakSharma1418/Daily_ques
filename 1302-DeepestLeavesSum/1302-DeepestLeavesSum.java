@@ -1,0 +1,49 @@
+// Last updated: 8/28/2025, 7:40:32 AM
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int deepestLeavesSum(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+
+        int maxSum = Integer.MIN_VALUE;
+        int ansLevel = 0;
+        int level = 0;
+        int sum = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
+             sum = 0;
+            level++;
+
+            for (int i = 0; i < size; i++) {
+                TreeNode node = q.poll();
+                // if(i==0 || i==size-1){
+                    sum += node.val;
+                // }
+
+                if (node.left != null) q.add(node.left);
+                if (node.right != null) q.add(node.right);
+            }
+
+            // if (ansLevel <level ) {
+                // maxSum = sum;
+                // ansLevel = level;
+            // }
+        }
+
+        return sum;
+        }
+}
