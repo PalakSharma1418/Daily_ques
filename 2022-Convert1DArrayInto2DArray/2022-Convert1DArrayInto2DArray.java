@@ -1,16 +1,18 @@
-// Last updated: 9/29/2025, 11:19:48 AM
+// Last updated: 9/30/2025, 8:28:58 PM
 class Solution {
-    public int[][] construct2DArray(int[] arr, int r, int c) {
-        if(arr.length != r*c){
-            return new int[0][0];
-        }
-        int ind=0;
-        int mat[][] = new int[r][c];
-        for(int i=0;i<r;i++){
-            for(int j=0;j<c;j++){
-                mat[i][j]=arr[ind++];
+    public int[][] flipAndInvertImage(int[][] image) {
+        for(int i=0;i<image.length;i++){
+            int j=0;
+            int k=image[i].length-1;
+            while(j<=k){
+                int temp=image[i][j]^1;
+                image[i][j]=image[i][k]^1;
+                image[i][k]=temp;
+                j++;
+                k--;
             }
+            
         }
-        return mat;
+        return image;
     }
 }
