@@ -1,22 +1,14 @@
-// Last updated: 10/6/2025, 6:24:30 AM
+// Last updated: 10/6/2025, 6:25:28 AM
 class Solution {
-    public int findContentChildren(int[] g, int[] s) {
-        Arrays.sort(g);
-        Arrays.sort(s);
-        int i=0;
-        int j=0;
-        int count=0;
-        while(i<g.length && j<s.length){
-            if(s[j]>=g[i]){
-                i++;
-                j++;
-                count++;
-             }
-            else if(s[j]<g[i]){
-                j++;
-            }
-        }
+    public void reverseString(char[] s) {
+        reverse(s ,0, s.length-1);
+    }
+    public static void reverse(char[] s,int i,int j) {
+        if(i>j) return;
 
-        return count;
+        char ch = s[i];
+        s[i]=s[j];
+        s[j]=ch;
+        reverse(s,i+1,j-1);
     }
 }
