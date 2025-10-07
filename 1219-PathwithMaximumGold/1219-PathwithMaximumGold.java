@@ -1,36 +1,24 @@
-// Last updated: 10/7/2025, 6:58:10 AM
+// Last updated: 10/7/2025, 7:01:29 AM
 class Solution {
-    int max;
-
-    public int getMaximumGold(int[][] grid) {
-        max = 0;
-        int n = grid.length, m = grid[0].length;
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (grid[i][j] != 0) {
-                    dfs(grid, i, j, 0);
-                }
-            }
-        }
-        return max;
+    int count = 0;
+    public int countArrangement(int n) {
+        boolean[] used = new boolean[n + 1]; // 1-indexed
+        backtrack(n, 1, used);
+        return count;
     }
 
-    public void dfs(int[][] grid, int cr, int cc, int amt) {
-        if (cr < 0 || cc < 0 || cr >= grid.length || cc >= grid[0].length || grid[cr][cc] == 0)
+    private void backtrack(int n, int pos, boolean[] used) {
+        if (pos > n) {
+            count++;
             return;
+        }
 
-        int tem = grid[cr][cc];
-        amt += tem;
-        max = Math.max(max, amt); 
-
-        grid[cr][cc] = 0;  
-
-        dfs(grid, cr + 1, cc, amt);
-        dfs(grid, cr - 1, cc, amt);
-        dfs(grid, cr, cc + 1, amt);
-        dfs(grid, cr, cc - 1, amt);
-
-        grid[cr][cc] = tem;  // backtrack
+        for (int i = 1; i <= n; i++) {
+            if (!used[i] && (i % pos == 0 || pos % i == 0)) {
+                used[i] = true;
+                backtrack(n, pos + 1, used);
+                used[i] = false;
+            }
+        }
     }
 }
