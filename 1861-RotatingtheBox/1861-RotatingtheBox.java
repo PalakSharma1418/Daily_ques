@@ -1,44 +1,56 @@
-// Last updated: 10/17/2025, 7:31:25 PM
+// Last updated: 10/25/2025, 7:32:25 PM
+import java.util.*;
+
 class Solution {
-    public char[][] rotateTheBox(char[][] boxGrid) {
-        char[][] res = deg(boxGrid);
-        int r=res.length;
-        int c=res[0].length;
-        for(int j=0;j<c;j++){
-            for(int i=r-1;i>=0;i--){//sabse niche bali row se chalu karna hai
-                 if(res[i][j]=='*' || res[i][j]=='.'){
-                    continue;
-                 }
-                 if(res[i][j]=='#'){
-                    while(i+1<r && res[i+1][j]=='.'){
-                        res[i][j]='.';
-                        res[i+1][j]='#';
-                        i++;
-                    }
-                 }
-                
-            }
-        }
-        return res;
-    }
-    public char[][] deg(char[][] mat){
-
-        int n=mat.length,m=mat[0].length;
-        char[][] res = new char[m][n];
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                res[j][i]=mat[i][j];
-            }
-        }
-        for(int i=0;i<m;i++){
-            int k=0;
-            for (int j = 0; j < n / 2; j++) {   // swap up to middle
-                char temp = res[i][j];
-                res[i][j] = res[i][n - 1 - j];
-                res[i][n - 1 - j] = temp;
-            }
-        }
-        return res;
+    public int maxLength(List<String> arr) {
+        return helper(arr, 0, "", new HashMap<>());
     }
 
+    private int helper(List<String> arr, int idx, String st, Map<String, Integer> memo) {
+        if (idx == arr.size()) {
+            return st.length();
+        }
+
+        // Create a unique key for memoization
+        String key = idx + "|" + sorted(st);
+        if (memo.containsKey(key)) return memo.get(key);
+
+        String s = arr.get(idx);
+        int take = 0;
+
+        // Choice 1: take current string if valid
+        if (nocommon(s, st) && unique(s)) {
+            take = helper(arr, idx + 1, st + s, memo);
+        }
+
+        // Choice 2: skip current string
+        int skip = helper(arr, idx + 1, st, memo);
+
+        int ans = Math.max(take, skip);
+        memo.put(key, ans);
+        return ans;
+    }
+
+    private boolean nocommon(String a, String b) {
+        boolean[] seen = new boolean[26];
+        for (char c : a.toCharArray()) seen[c - 'a'] = true;
+        for (char c : b.toCharArray()) if (seen[c - 'a']) return false;
+        return true;
+    }
+
+    private boolean unique(String s) {
+        boolean[] seen = new boolean[26];
+        for (char c : s.toCharArray()) {
+            if (seen[c - 'a']) return false;
+            seen[c - 'a'] = true;
+        }
+        return true;
+    }
+
+    // Helper to sort string (so "ab" and "ba" count same in memo)
+    private String sorted(String s) {
+        char[] arr = s.toCharArray();
+        Arrays.sort(arr);
+        return new String(arr);
+    }
 }
