@@ -1,4 +1,4 @@
-// Last updated: 10/26/2025, 7:18:35 PM
+// Last updated: 10/28/2025, 8:00:03 PM
 class Solution {
     public static int calculate(String s) {
         Stack<Integer> stack = new Stack<>();
