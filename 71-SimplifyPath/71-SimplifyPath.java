@@ -1,32 +1,32 @@
-// Last updated: 8/6/2025, 4:50:32 PM
-class Solution {
-    public static String simplifyPath(String path) {
-        // Split the path by slash
-        String[] parts = path.split("/");
-        Stack<String> stack = new Stack<>();
-
-        for (String part : parts) {
-            if (part.equals("") || part.equals(".")) {
-                // Skip empty and current directory
-                continue;
-            } else if (part.equals("..")) {
-                // Go up one directory if possible
-                if (!stack.isEmpty()) {
-                    stack.pop();
-                }
-            } else {
-                // Valid directory name, push to stack
-                stack.push(part);
-            }
-        }
-
-        // Build the canonical path
-        StringBuilder result = new StringBuilder();
-        for (String dir : stack) {
-            result.append("/").append(dir);
-        }
-
-        // If the result is empty, it means root directory
-        return result.length() > 0 ? result.toString() : "/";
-    }
-}
+// Last updated: 12/11/2025, 7:22:55 PM
+1class Solution {
+2    public static String simplifyPath(String path) {
+3        // Split the path by slash
+4        String[] parts = path.split("/");
+5        Stack<String> stack = new Stack<>();
+6
+7        for (String part : parts) {
+8            if (part.equals("") || part.equals(".")) {
+9                // Skip empty and current directory
+10                continue;
+11            } else if (part.equals("..")) {
+12                // Go up one directory if possible
+13                if (!stack.isEmpty()) {
+14                    stack.pop();
+15                }
+16            } else {
+17                // Valid directory name, push to stack
+18                stack.push(part);
+19            }
+20        }
+21
+22        // Build the canonical path
+23        StringBuilder result = new StringBuilder();
+24        for (String dir : stack) {
+25            result.append("/").append(dir);
+26        }
+27
+28        // If the result is empty, it means root directory
+29        return result.length() > 0 ? result.toString() : "/";
+30    }
+31}
