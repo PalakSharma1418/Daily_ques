@@ -1,0 +1,46 @@
+// Last updated: 12/11/2025, 7:34:57 AM
+class Solution {
+    // tc(n) kyuki hr baar nhi chalega andar bala
+    public int longestCycle(int[] edges) {
+        // indegree
+        int[] in = new int[edges.length];
+        for(int i=0;i<edges.length;i++){
+            // in[edges[i]]++;
+            if (edges[i] != -1) {
+                in[edges[i]]++;
+            }
+        }
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=0;i<in.length;i++){
+            if(in[i]==0){
+                q.add(i);
+            }
+        }
+        boolean []visited = new boolean[edges.length];
+        while(!q.isEmpty()){
+            int e = q.poll();
+            visited[e] = true;
+            // in[edges[e]]--;
+            // if(in[edges[e]]==0) q.add(edges[e]);
+            int next = edges[e];
+            if (next != -1) {
+                in[next]--;
+                if (in[next] == 0) q.add(next);
+            }
+        }
+        int ans=-1;
+        for(int i=0;i<visited.length;i++){
+            if(visited[i]==false){
+                int c=1;
+                int nbrs=edges[i];
+                while(nbrs!=i){
+                    c++;
+                    visited[nbrs]=true;
+                    nbrs=edges[nbrs];
+                }
+                ans=Math.max(ans,c);
+            }
+        }
+        return ans;
+    }
+}
