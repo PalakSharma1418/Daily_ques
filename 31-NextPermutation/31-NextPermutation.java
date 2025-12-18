@@ -1,4 +1,4 @@
-// Last updated: 12/15/2025, 5:12:57 PM
+// Last updated: 12/18/2025, 7:30:52 PM
 1class Solution {
 2    public void nextPermutation(int[] nums) {
 3        next_permutation(nums);
