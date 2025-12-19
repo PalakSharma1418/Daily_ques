@@ -1,4 +1,4 @@
-// Last updated: 12/19/2025, 7:55:16 PM
+// Last updated: 12/19/2025, 8:10:14 PM
 1class Solution {
 2    public int findLHS(int[] nums) {
 3        HashMap<Integer, Integer> map = new HashMap<>();
