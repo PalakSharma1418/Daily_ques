@@ -1,19 +1,19 @@
-// Last updated: 8/6/2025, 4:51:41 PM
-class Solution {
-    public int maxArea(int[] arr) {
-       int sum=0;
-       int left=0;
-       int right=arr.length-1;
-       while(left < right){
-        int s=(right-left)*Math.min (arr[left],arr[right]);
-        sum = Math.max(sum,s);
-        if(arr[left]<arr[right]){
-            left++;
-        }
-        else{
-            right--;
-        }
-       }
-        return sum;
-    }
-}
+// Last updated: 12/19/2025, 10:54:14 AM
+1class Solution {
+2    public int maxArea(int[] arr) {
+3       int sum=0;
+4       int left=0;
+5       int right=arr.length-1;
+6       while(left < right){
+7            int s=(right-left)*Math.min (arr[left],arr[right]);
+8            sum = Math.max(sum,s);
+9            if(arr[left]<arr[right]){
+10                left++;
+11            }
+12            else{
+13                right--;
+14            }
+15        }
+16        return sum;
+17    }
+18}
