@@ -1,4 +1,4 @@
-// Last updated: 12/9/2025, 7:31:05 PM
+// Last updated: 12/19/2025, 9:20:27 PM
 1class Solution {
 2    public static int[] twoSum(int[] nums, int target) {
 3        for(int i=0;i<nums.length;i++){
