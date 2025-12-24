@@ -1,4 +1,4 @@
-// Last updated: 12/24/2025, 12:16:54 PM
+// Last updated: 12/24/2025, 12:18:41 PM
 1class Solution {
 2    public String smallestString(String s) {
 3        int i = 0, n = s.length();
