@@ -1,4 +1,4 @@
-// Last updated: 1/4/2026, 3:11:08 PM
+// Last updated: 1/8/2026, 7:07:29 AM
 1class Solution {
 2    public int maxRepeating(String sequence, String word) {
 3        int k = 0;
