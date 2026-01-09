@@ -1,4 +1,4 @@
-// Last updated: 1/9/2026, 7:40:14 PM
+// Last updated: 1/9/2026, 8:43:51 PM
 1class Solution {
 2    public int maximumLength(int[] nums, int k) {
 3        int n = nums.length;
