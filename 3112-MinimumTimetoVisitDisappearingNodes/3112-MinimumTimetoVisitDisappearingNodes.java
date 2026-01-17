@@ -1,4 +1,4 @@
-// Last updated: 1/2/2026, 3:15:46 PM
+// Last updated: 1/17/2026, 2:18:10 PM
 1class Solution {
 2    public int[] minimumTime(int n, int[][] edges, int[] disappear) {
 3        HashMap<Integer,HashMap<Integer,Integer>> map = new HashMap<>();
