@@ -1,4 +1,4 @@
-// Last updated: 1/12/2026, 7:51:59 PM
+// Last updated: 1/18/2026, 5:31:27 PM
 1class Solution {
 2    public int minimumOperations(int[] nums) {
 3
