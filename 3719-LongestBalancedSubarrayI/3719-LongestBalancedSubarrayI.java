@@ -1,4 +1,4 @@
-// Last updated: 1/12/2026, 5:40:24 PM
+// Last updated: 1/19/2026, 11:24:27 AM
 1class Solution {
 2    public int longestBalanced(int[] nums) {
 3        int no = nums.length;
