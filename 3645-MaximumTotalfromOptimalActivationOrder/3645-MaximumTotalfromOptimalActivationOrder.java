@@ -1,4 +1,4 @@
-// Last updated: 1/18/2026, 5:32:41 PM
+// Last updated: 1/23/2026, 7:27:43 PM
 1class Solution {
 2    public long maxTotal(int[] value, int[] limit) {
 3        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> {
