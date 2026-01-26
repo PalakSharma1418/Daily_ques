@@ -1,58 +1,85 @@
-// Last updated: 1/21/2026, 7:47:26 PM
+// Last updated: 1/26/2026, 4:52:51 PM
 1class Solution {
 2    public int primeSubarray(int[] nums, int k) {
-3        int n = nums.length;
-4        int st = 0;
-5        int end = 0;
-6        int ans = 0;
-7        int prime = 0;
-8
-9        int lastPrimePos = -1;
-10        int secondLastPrimePos = -1;
+3
+4        int n = nums.length;
+5
+6        int right = 0;          // window right pointer
+7        int left = 0;           // window left pointer
+8        int totalSubarrays = 0;
+9
+10        int primeCount = 0;
 11
-12        Deque<Integer> min = new ArrayDeque<>();
-13        Deque<Integer> max = new ArrayDeque<>();
+12        int lastPrimeIndex = -1;
+13        int secondLastPrimeIndex = -1;
 14
-15        while (st < n) {
-16            int num = nums[st];
+15        Deque<Integer> minPrimeDeque = new ArrayDeque<>();
+16        Deque<Integer> maxPrimeDeque = new ArrayDeque<>();
 17
-18            if (isPrime(num)) {
-19                prime++;
-20                secondLastPrimePos = lastPrimePos;
-21                lastPrimePos = st;
-22
-23                while (!min.isEmpty() && min.peekLast() > num)
-24                    min.pollLast();
-25                min.addLast(num);
+18        while (right < n) {
+19
+20            int currentNumber = nums[right];
+21
+22            // If current number is prime
+23            if (isPrime(currentNumber)) {
+24
+25                primeCount++;
 26
-27                while (!max.isEmpty() && max.peekLast() < num)
-28                    max.pollLast();
-29                max.addLast(num);
-30            }
-31
-32            while (!min.isEmpty() && !max.isEmpty()
-33                    && max.peekFirst() - min.peekFirst() > k) {
-34
-35                if (nums[end] == min.peekFirst()) min.pollFirst();
-36                if (nums[end] == max.peekFirst()) max.pollFirst();
-37                if (isPrime(nums[end])) prime--;
-38                end++;
-39            }
-40
-41            if (prime >= 2) {
-42                ans += Math.max(0, secondLastPrimePos - end + 1);
+27                secondLastPrimeIndex = lastPrimeIndex;
+28                lastPrimeIndex = right;
+29
+30                // Maintain minimum prime deque
+31                while (!minPrimeDeque.isEmpty() &&
+32                       minPrimeDeque.peekLast() > currentNumber) {
+33                    minPrimeDeque.pollLast();
+34                }
+35                minPrimeDeque.addLast(currentNumber);
+36
+37                // Maintain maximum prime deque
+38                while (!maxPrimeDeque.isEmpty() &&
+39                       maxPrimeDeque.peekLast() < currentNumber) {
+40                    maxPrimeDeque.pollLast();
+41                }
+42                maxPrimeDeque.addLast(currentNumber);
 43            }
 44
-45            st++;
-46        }
-47        return ans;
-48    }
+45            // Shrink window if maxPrime - minPrime > k
+46            while (!minPrimeDeque.isEmpty() &&
+47                   !maxPrimeDeque.isEmpty() &&
+48                   maxPrimeDeque.peekFirst() - minPrimeDeque.peekFirst() > k) {
 49
-50    public boolean isPrime(int el) {
-51        if (el <= 1) return false;
-52        for (int i = 2; i * i <= el; i++) {
-53            if (el % i == 0) return false;
-54        }
-55        return true;
-56    }
-57}
+50                if (nums[left] == minPrimeDeque.peekFirst())
+51                    minPrimeDeque.pollFirst();
+52
+53                if (nums[left] == maxPrimeDeque.peekFirst())
+54                    maxPrimeDeque.pollFirst();
+55
+56                if (isPrime(nums[left]))
+57                    primeCount--;
+58
+59                left++;
+60            }
+61
+62            // Count valid subarrays
+63            if (primeCount >= 2) {
+64                totalSubarrays += Math.max(
+65                        0,
+66                        secondLastPrimeIndex - left + 1
+67                );
+68            }
+69
+70            right++;
+71        }
+72
+73        return totalSubarrays;
+74    }
+75
+76    private boolean isPrime(int number) {
+77        if (number <= 1) return false;
+78        for (int i = 2; i * i <= number; i++) {
+79            if (number % i == 0) return false;
+80        }
+81        return true;
+82    }
+83}
+84
