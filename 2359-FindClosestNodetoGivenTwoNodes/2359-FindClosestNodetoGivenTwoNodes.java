@@ -1,4 +1,4 @@
-// Last updated: 1/11/2026, 1:33:38 PM
+// Last updated: 1/27/2026, 1:08:24 PM
 1class Solution {
 2    public int closestMeetingNode(int[] edges, int node1, int node2) {
 3        int[] mind1=mindis(edges,node1);
