@@ -1,4 +1,4 @@
-// Last updated: 1/8/2026, 6:44:16 PM
+// Last updated: 1/27/2026, 1:08:11 PM
 1class Solution {
 2
 3    public int minZeroArray(int[] nums, int[][] queries) {
