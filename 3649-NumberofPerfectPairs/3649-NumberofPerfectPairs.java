@@ -1,4 +1,4 @@
-// Last updated: 1/14/2026, 12:43:17 PM
+// Last updated: 1/30/2026, 6:40:58 PM
 1class Solution {
 2    public long perfectPairs(int[] nums) {
 3        int n = nums.length;
