@@ -1,4 +1,4 @@
-// Last updated: 1/25/2026, 7:27:22 PM
+// Last updated: 2/7/2026, 5:56:19 PM
 1class Solution {
 2    public long minimalKSum(int[] nums, int k) {
 3        int n=nums.length;
