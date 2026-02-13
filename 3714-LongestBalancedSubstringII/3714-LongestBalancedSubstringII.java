@@ -1,4 +1,4 @@
-// Last updated: 12/27/2025, 8:46:21 PM
+// Last updated: 2/13/2026, 7:28:26 PM
 1class Solution {
 2    public int longestBalanced(String s) {
 3        int n = s.length();
