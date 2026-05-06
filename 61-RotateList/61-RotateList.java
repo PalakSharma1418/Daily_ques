@@ -1,45 +1,45 @@
-// Last updated: 8/6/2025, 4:50:37 PM
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode rotateRight(ListNode head, int k) {
-        if (head == null || head.next == null) return head;
-        int size = getSize(head);
-        k %= size;
-        if (k == 0) return head;
-        int newHeadPosition = size - k;
-        ListNode temp = head;
-        for (int i = 1; i < newHeadPosition; i++) {
-            temp = temp.next;
-        }
-        ListNode newHead = temp.next;
-        temp.next = null;
-        ListNode lastNode = getLastNode(newHead);
-        lastNode.next = head;
-        return newHead;
-    }
-    private int getSize(ListNode head) {
-        int count = 0;
-        ListNode temp = head;
-        while (temp != null) {
-            count++;
-            temp = temp.next;
-        }
-        return count;
-    }
-    private ListNode getLastNode(ListNode head) {
-        ListNode temp = head;
-        while (temp.next != null) {
-            temp = temp.next;
-        }
-        return temp;
-    }
-}
+// Last updated: 5/6/2026, 7:43:00 PM
+1/**
+2 * Definition for singly-linked list.
+3 * public class ListNode {
+4 *     int val;
+5 *     ListNode next;
+6 *     ListNode() {}
+7 *     ListNode(int val) { this.val = val; }
+8 *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+9 * }
+10 */
+11class Solution {
+12    public ListNode rotateRight(ListNode head, int k) {
+13        if (head == null || head.next == null) return head;
+14        int size = getSize(head);
+15        k %= size;
+16        if (k == 0) return head;
+17        int newHeadPosition = size - k;
+18        ListNode temp = head;
+19        for (int i = 1; i < newHeadPosition; i++) {
+20            temp = temp.next;
+21        }
+22        ListNode newHead = temp.next;
+23        temp.next = null;
+24        ListNode lastNode = getLastNode(newHead);
+25        lastNode.next = head;
+26        return newHead;
+27    }
+28    private int getSize(ListNode head) {
+29        int count = 0;
+30        ListNode temp = head;
+31        while (temp != null) {
+32            count++;
+33            temp = temp.next;
+34        }
+35        return count;
+36    }
+37    private ListNode getLastNode(ListNode head) {
+38        ListNode temp = head;
+39        while (temp.next != null) {
+40            temp = temp.next;
+41        }
+42        return temp;
+43    }
+44}
