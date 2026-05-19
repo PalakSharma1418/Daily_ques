@@ -1,4 +1,4 @@
-// Last updated: 12/26/2025, 12:28:31 PM
+// Last updated: 5/19/2026, 7:56:47 PM
 1public class Solution {
 2    public int getCommon(int[] nums1, int[] nums2) {
 3        Set<Integer> set1 = new HashSet<>();
