@@ -1,56 +1,56 @@
-// Last updated: 8/6/2025, 4:49:39 PM
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode sortList(ListNode head) {
-        if(head==null || head.next==null){
-            return head;
-        }
-        ListNode mid=middle(head);
-        ListNode headB=mid.next;
-        mid.next=null;
-        ListNode a=sortList(head);
-        ListNode b=sortList(headB);
-        return Merge(a,b);
-    }
-    public ListNode Merge(ListNode list1, ListNode list2){
-        ListNode dummy=new ListNode();
-        ListNode temp=dummy;
-        while(list1!=null && list2!=null){
-            if(list1.val<list2.val){
-                dummy.next=list1;
-                dummy=dummy.next;
-                list1=list1.next;
-            }
-            else{
-                dummy.next=list2;
-                dummy=dummy.next;
-                list2=list2.next;
-            }
-        }
-        if(list1==null){
-            dummy.next=list2;
-        }
-        if(list2==null){
-            dummy.next=list1;
-        }
-        return temp.next;
-    }
-    public ListNode middle(ListNode head){
-        ListNode slow=head;
-        ListNode fast=head;
-        while(fast.next!=null && fast.next.next!=null){
-            fast=fast.next.next;
-            slow=slow.next;
-        }
-        return slow;
-    }
-}
+// Last updated: 8/11/2026, 6:42:14 PM
+1/**
+2 * Definition for singly-linked list.
+3 * public class ListNode {
+4 *     int val;
+5 *     ListNode next;
+6 *     ListNode() {}
+7 *     ListNode(int val) { this.val = val; }
+8 *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+9 * }
+10 */
+11class Solution {
+12    public ListNode sortList(ListNode head) {
+13        if(head==null || head.next==null){
+14            return head;
+15        }
+16        ListNode mid=middle(head);
+17        ListNode headB=mid.next;
+18        mid.next=null;
+19        ListNode a=sortList(head);
+20        ListNode b=sortList(headB);
+21        return Merge(a,b);
+22    }
+23    public ListNode Merge(ListNode list1, ListNode list2){
+24        ListNode dummy=new ListNode();
+25        ListNode temp=dummy;
+26        while(list1!=null && list2!=null){
+27            if(list1.val<list2.val){
+28                dummy.next=list1;
+29                dummy=dummy.next;
+30                list1=list1.next;
+31            }
+32            else{
+33                dummy.next=list2;
+34                dummy=dummy.next;
+35                list2=list2.next;
+36            }
+37        }
+38        if(list1==null){
+39            dummy.next=list2;
+40        }
+41        if(list2==null){
+42            dummy.next=list1;
+43        }
+44        return temp.next;
+45    }
+46    public ListNode middle(ListNode head){
+47        ListNode slow=head;
+48        ListNode fast=head.next;
+49        while(fast!=null && fast.next!=null){
+50            fast=fast.next.next;
+51            slow=slow.next;
+52        }
+53        return slow;
+54    }
+55}
